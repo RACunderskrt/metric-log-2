@@ -19,5 +19,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Run Maven tests
-        run: mvn clean test
+      - name: Test & Package application
+        run: mvn clean package
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: maven-target
+          path: target/
